@@ -1,10 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Banner from "../../../../components/Banner";
+import Images from "../../../../constants/images";
+import { Container } from "reactstrap";
+import { Link } from "react-router-dom";
 
 MainPage.propTypes = {};
 
 function MainPage(props) {
-  return <div>Photo Main Page</div>;
+  return (
+    <div className="photo-main">
+      <Banner
+        title="Title Banner Main Page"
+        backgroundUrl={Images.MAIN_GB}
+      ></Banner>
+      <Container className="text-center">
+        <Link to="/photos/add">Add new photo</Link>
+      </Container>
+    </div>
+  );
 }
 
 export default MainPage;
