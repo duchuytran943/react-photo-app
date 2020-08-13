@@ -1,8 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Container, Row, Col } from "reactstrap";
 import { NavLink } from "react-router-dom";
-
+import { Col, Container, Row } from "reactstrap";
 import "./Header.scss";
 
 Header.propTypes = {};
