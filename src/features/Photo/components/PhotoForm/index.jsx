@@ -2,10 +2,10 @@ import { PHOTO_CATEGORY_OPTIONS } from "constants/global";
 import Images from "constants/images";
 import PropTypes from "prop-types";
 import React from "react";
-import Select from "react-select";
 import { Button, FormGroup, Label } from "reactstrap";
 import { Formik, Form, FastField } from "formik";
 import InputField from "custom-fields/InputField";
+import SelectFiled from "custom-fields/SelectFiled";
 
 PhotoForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -18,6 +18,7 @@ PhotoForm.defaultProps = {
 function PhotoForm(props) {
   const initialValues = {
     title: "",
+    categoryId: null,
   };
 
   return (
@@ -32,15 +33,13 @@ function PhotoForm(props) {
               label="Title"
               placeholder="Eg: Wow nature ..."
             />
-            <FormGroup>
-              <Label for="categoryId">Category</Label>
-              <Select
-                name="categoryId"
-                id="categoryId"
-                placeholder="What's your photo category?"
-                options={PHOTO_CATEGORY_OPTIONS}
-              />
-            </FormGroup>
+            <FastField
+              name="categoryId"
+              component={SelectFiled}
+              label="Category"
+              options={PHOTO_CATEGORY_OPTIONS}
+              placeholder="What's your photo category?"
+            />
 
             <FormGroup>
               <Label for="categoryId">Photo</Label>
