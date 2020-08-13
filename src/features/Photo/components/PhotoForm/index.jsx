@@ -1,11 +1,11 @@
 import { PHOTO_CATEGORY_OPTIONS } from "constants/global";
-import Images from "constants/images";
+import InputField from "custom-fields/InputField";
+import RandomPhotoField from "custom-fields/RandomPhotoField";
+import SelectFiled from "custom-fields/SelectFiled";
+import { FastField, Form, Formik } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, FormGroup, Label } from "reactstrap";
-import { Formik, Form, FastField } from "formik";
-import InputField from "custom-fields/InputField";
-import SelectFiled from "custom-fields/SelectFiled";
+import { Button, FormGroup } from "reactstrap";
 
 PhotoForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -19,10 +19,14 @@ function PhotoForm(props) {
   const initialValues = {
     title: "",
     categoryId: null,
+    photo: "",
   };
 
   return (
-    <Formik initialValues={initialValues}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values) => console.log("values:", values)}
+    >
       {(pormikProps) => {
         console.log("pormik:", pormikProps);
         return (
@@ -41,26 +45,16 @@ function PhotoForm(props) {
               placeholder="What's your photo category?"
             />
 
-            <FormGroup>
-              <Label for="categoryId">Photo</Label>
-
-              <div>
-                <Button type="button" outline color="primary">
-                  Random a photo
-                </Button>
-              </div>
-              <div>
-                <img
-                  width="200px"
-                  height="200px"
-                  src={Images.MAIN_GB}
-                  alt="colorful background"
-                />
-              </div>
-            </FormGroup>
+            <FastField
+              name="photo"
+              component={RandomPhotoField}
+              label="Photo"
+            />
 
             <FormGroup>
-              <Button color="primary">Add to album</Button>
+              <Button type="submit" color="primary">
+                Add to album
+              </Button>
             </FormGroup>
           </Form>
         );
