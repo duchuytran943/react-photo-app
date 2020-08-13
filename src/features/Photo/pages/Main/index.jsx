@@ -11,7 +11,7 @@ function MainPage(props) {
   return (
     <div className="photo-main">
       <Banner
-        title="Title Banner Main Page"
+        title="Your awsome photos"
         backgroundUrl={Images.MAIN_GB}
       ></Banner>
       <Container className="text-center">
