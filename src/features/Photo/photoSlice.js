@@ -92,9 +92,15 @@ const photo = createSlice({
       //Because redux-toolkit appile a immutiable data, so we can change data direct state
       state.push(newPhoto);
     },
+
+    removePhoto: (state, action) => {
+      const removeId = action.payload;
+      console.log("removeId", removeId);
+      return state.filter((photo) => photo.id !== removeId);
+    },
   },
 });
 
 const { reducer, actions } = photo;
-export const { addPhoto } = actions;
+export const { addPhoto, removePhoto } = actions;
 export default reducer;

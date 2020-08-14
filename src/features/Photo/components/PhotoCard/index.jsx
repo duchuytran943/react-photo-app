@@ -18,12 +18,16 @@ PhotoCard.defaultProps = {
 function PhotoCard(props) {
   const { photo, onRemoveClick, onEditClick } = props;
 
-  const handleEditButtonClick = (photo) => {
-    console.log("edit", photo);
+  const handleRemoveButtonClick = (photo) => {
+    if (onRemoveClick) {
+      onRemoveClick(photo);
+    }
   };
 
-  const handleRemoveButtonClick = (photo) => {
-    console.log("remove", photo);
+  const handleEditButtonClick = (photo) => {
+    if (onEditClick) {
+      onEditClick(photo);
+    }
   };
 
   return (
