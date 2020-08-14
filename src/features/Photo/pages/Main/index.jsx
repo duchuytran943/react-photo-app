@@ -1,9 +1,10 @@
 import Banner from "components/Banner";
 import Images from "constants/images";
+import PhotoList from "features/Photo/components/PhotoList";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
-import { useSelector } from "react-redux";
 
 MainPage.propTypes = {};
 
@@ -17,7 +18,10 @@ function MainPage(props) {
         backgroundUrl={Images.MAIN_GB}
       ></Banner>
       <Container className="text-center">
-        <Link to="/photos/add">Add new photo</Link>
+        <div className="py-5">
+          <Link to="/photos/add">Add new photo</Link>
+        </div>
+        <PhotoList photos={photos}></PhotoList>
       </Container>
     </div>
   );
