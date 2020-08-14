@@ -15,7 +15,7 @@ function MainPage(props) {
     <div className="photo-main">
       <Banner
         title="Your awsome photos"
-        backgroundUrl={Images.MAIN_GB}
+        backgroundUrl={Images.COLORFUL_BG}
       ></Banner>
       <Container className="text-center">
         <div className="py-5">
