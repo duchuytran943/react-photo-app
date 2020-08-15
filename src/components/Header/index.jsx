@@ -13,7 +13,7 @@ function Header(props) {
           <Col xs="auto">
             <a
               className="header__link header__title"
-              href="https://www.google.com/"
+              href="https://www.facebook.com/duchuytran943"
               target="_blank"
               rel="noopener noreferrer"
             >

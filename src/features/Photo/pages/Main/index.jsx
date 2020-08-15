@@ -29,7 +29,7 @@ function MainPage(props) {
   return (
     <div className="photo-main">
       <Banner
-        title="Your awsome photos"
+        title="Your awesome photos"
         backgroundUrl={Images.COLORFUL_BG}
       ></Banner>
       <Container className="text-center">
