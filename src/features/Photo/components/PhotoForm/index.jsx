@@ -10,18 +10,18 @@ import * as Yup from "yup";
 
 PhotoForm.propTypes = {
   onSubmit: PropTypes.func,
+  initialValues: PropTypes.object,
+  isAddMode: PropTypes.bool,
 };
 
 PhotoForm.defaultProps = {
   onSubmit: null,
+  initialValues: {},
+  isAddMode: true,
 };
 
 function PhotoForm(props) {
-  const initialValues = {
-    title: "",
-    categoryId: null,
-    photo: "",
-  };
+  const { initialValues, isAddMode, onSubmit } = props;
 
   let validationSchema = Yup.object().shape({
     title: Yup.string().required("This field is require!"),
@@ -37,7 +37,7 @@ function PhotoForm(props) {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={props.onSubmit}
+      onSubmit={onSubmit}
     >
       {(pormikProps) => {
         // const { values, errors, touched } = pormikProps;
@@ -67,9 +67,9 @@ function PhotoForm(props) {
             />
 
             <FormGroup>
-              <Button type="submit" color="primary">
-                {isSubmitting && <Spinner className="xs" />}
-                Add to album
+              <Button type="submit" color={isAddMode ? "primary" : "success"}>
+                {isSubmitting && <Spinner size="sm" />}
+                {isAddMode ? "Add to album" : "Update your photo"}
               </Button>
             </FormGroup>
           </Form>

@@ -1,31 +1,22 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
+import { Col, Row } from "reactstrap";
 import PhotoCard from "../PhotoCard";
-import { Row, Col } from "reactstrap";
-import { useDispatch } from "react-redux";
-import { removePhoto } from "features/Photo/photoSlice";
 
 PhotoList.propTypes = {
   photos: PropTypes.array,
+  onRemoveClick: PropTypes.func,
+  onEditClick: PropTypes.func,
 };
 
 PhotoList.defaultProps = {
   photos: [],
+  onRemoveClick: null,
+  onEditClick: null,
 };
 
 function PhotoList(props) {
-  const { photos } = props;
-  const dispatch = useDispatch();
-
-  const handleRemoveClick = (photo) => {
-    console.log("remove", photo);
-    const action = removePhoto(photo.id);
-    dispatch(action);
-  };
-
-  const handleEditClick = (photo) => {
-    console.log("edit", photo);
-  };
+  const { photos, onRemoveClick, onEditClick } = props;
 
   return (
     <Row>
@@ -33,8 +24,8 @@ function PhotoList(props) {
         <Col key={photo.id} xs="12" md="6" lg="3">
           <PhotoCard
             photo={photo}
-            onRemoveClick={handleRemoveClick}
-            onEditClick={handleEditClick}
+            onRemoveClick={onRemoveClick}
+            onEditClick={onEditClick}
           />
         </Col>
       ))}
