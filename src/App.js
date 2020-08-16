@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+import productApi from "api/productApi";
+import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
@@ -8,6 +9,25 @@ import NotFound from "./components/NotFound";
 const Photo = React.lazy(() => import("./features/Photo"));
 
 function App() {
+  const [productList, setProductList] = useState([]);
+  console.log("process.env.REACT_APP_API_URL,", process.env.REACT_APP_API_URL);
+  useEffect(() => {
+    const getProductList = async () => {
+      try {
+        const params = {
+          _page: 1,
+          _limit: 10,
+        };
+        const response = await productApi.getAll(params);
+        console.log(response);
+        setProductList(response);
+      } catch (error) {
+        console.log("Faild to get list product:", error);
+      }
+    };
+    getProductList();
+  }, []);
+
   return (
     <div className="photo-app">
       <Suspense fallback={<div>Loading...</div>}>
